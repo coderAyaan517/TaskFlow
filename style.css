@@ -1,0 +1,173 @@
+:root {
+    --bg-primary: #000;
+    --bg-btn: #1a1a1a;
+    --bg-task: #2a2a2a;
+    --delete-btn: #ff4d4d;
+    --text-primary: #f4f4f4;
+
+    /* Padding variables */
+    --nav-padding: var(--padding-lg) var(--padding-xxl);
+    --section-padding: var(--padding-lg) var(--padding-xxl);
+    --padding-sm: 5px;
+    --padding-md: 10px;
+    --padding-lg: 15px;
+    --padding-xl: 20px;
+    --padding-xxl: 30px;
+
+    /* Border Radius */
+    --border-radius-sm: 5px;
+    --border-radius-md: 10px;
+    --border-radius-lg: 15px;
+    --border-radius-xl: 20px;
+    --border-radius-xxl: 30px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    padding: var(--nav-padding);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-primary);
+}
+
+nav button {
+    background-color: var(--bg-btn);
+    border: none;
+    border-radius: var(--border-radius-md);
+    outline: none;
+    color: var(--text-primary);
+    padding: var(--padding-md) var(--padding-lg);
+    cursor: pointer;
+}
+
+section {
+    padding: var(--section-padding);
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    gap: var(--padding-xxl);
+}
+
+section .task-column {
+    width: 100%;
+    flex-grow: 1;
+    background-color: var(--bg-btn);
+    padding: var(--padding-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-md);
+    border-radius: var(--border-radius-md);
+    transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+section .task-column.hover-over {
+    border: 2px dashed var(--text-primary);
+    scale: 1.05;
+}
+
+.task-column .heading {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task-column .task {
+    background-color: var(--bg-task);
+    padding: var(--padding-md);
+    border-radius: var(--border-radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-sm);
+    cursor: grab;
+}
+
+.task-column .task button {
+    background-color: var(--delete-btn);
+    color: var(--text-primary);
+    align-self: flex-end;
+    cursor: pointer;
+    padding: var(--padding-sm) var(--padding-md);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    outline: none;
+}
+
+.modal {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal .bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(61, 61, 61, 0.4);
+    backdrop-filter: blur(5px);
+}
+
+.modal .center {
+    background-color: var(--bg-btn);
+    padding: var(--padding-xxl);
+    border-radius: var(--border-radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-md);
+    z-index: 10;
+}
+
+.modal .center input, .modal .center textarea {
+    background-color: var(--bg-task);
+    color: var(--text-primary);
+    border: none;
+    outline: none;
+    padding: var(--padding-md);
+    border-radius: var(--border-radius-sm);
+}
+
+.modal .center button {
+    background-color: var(--bg-task);
+    color: var(--text-primary);
+    border: none;
+    outline: none;
+    padding: var(--padding-md) var(--padding-lg);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    width: fit-content;
+    align-self: center;
+}
